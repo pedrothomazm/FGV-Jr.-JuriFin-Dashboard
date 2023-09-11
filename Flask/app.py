@@ -13,7 +13,12 @@ sh = gc.open('FGV Jr. 2023.02 - Planilha Financeira - Cópia Alterada')
 
 @app.route("/")
 def index():
-    return get_orcado_utilizado()
+    dados = {
+        'entradas_saidas_saldo': get_entradas_saidas_saldo(),
+        'orcado_utilizado': get_orcado_utilizado(),
+        'inadimplencia': get_inadimplencia()
+    }
+    return dados
 
 def get_entradas_saidas_saldo():
     wks = sh.worksheet_by_title('FLUXO DE CAIXA')
@@ -46,3 +51,15 @@ def get_orcado_utilizado():
         }
 
     return retorno
+
+def get_inadimplencia():
+    wks = sh.worksheet_by_title('CONTROLE DE INADIMPLÊNCIA')
+
+    # Pega a última célula com valor na coluna B
+    inadimplencia = wks.get_col(2, returnas='matrix', include_tailing_empty=False, include_empty=False, value_render=ValueRenderOption.UNFORMATTED_VALUE)[-1]
+
+    # retorno = {
+    #     'Inadimplência': inadimplencia
+    # }
+
+    return inadimplencia
