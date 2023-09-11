@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "jurifin-dashboard-pygsheets",
+  "private_key_id": "b0525e232b031e1b92b3c37d92d8c7075ce60425",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC7IL9eNSyRx50H\nQ44UaaARxOeHIARD4Z4rBCWaOuEoY4uIf7oGsIX0DemX3dIixGMyG2vsS0dk7wzP\noOHB+pdRs9T9Ef9WZNI1BV+BGGhrPZiF5DRtWYnG2UuhNCz/fxc2mHuWeV1HAntc\nCXyb3cNg6lRLnADPgrmWpXPPNfIgyZrGnft6N5bTk9PffMtKDNqYnP9tpvCowUiJ\npl19rAL0G0x6855wYWfTU5s38FqtuuCKjoLW/QicRb2SA6aOo/thtbxpEJC2Hz+J\n+zKMxIHT3p71GNyYD4dFqBKne/3yWBGJ2Hkuy+iMo677AiqjrIplFt9Cq1cjEhQE\nwgutIvr1AgMBAAECggEAE6DIee79bRAhUDr9ivYWWG7NM08AK4edodj2QcJ1zhj8\n8JUnM97tug8AhtG5YjSzy/R04kz2IOfzMc8oBwMMPsFscJwj6pG6O94DqcSf5UnJ\ndxfcCPFIop81z+OraaRQ0MT3R64UwudHfbywAaBmB0MlEuY67olBgsP5jQ1VR6t3\nceaoTC6NhQVI0cXGt/HPyoBV+FWW9H0FjR3HH9XTYQLEJf0DVqPHc9Pd76BMBaKY\nBTfZeK0einsLh2bIPOuBozKdbDrWGWdxvkmNz6U2i3V9vreu2TK66dOvvA5jUotY\nZotHn3Mlxed2D9heq0Gq4PIXoUUjJrRa7UVRW4/yeQKBgQD//Fq3dPeFvNENjVgt\ndMFjDBGTIYrQ5wQ+4fa6Tx4Pp9gwbcX3XrRS3FOmZMuUfDOF/8r3c09Qt/lJhxPN\nKgpClBH+nAutgp2SN5z0MIqaDBiXmqJcQLMYgga9VjyISgu/lAQcfbpDCtSHsoON\n0UHTgBkMfGo06LK7fnJjDZrzbQKBgQC7I2mbTKewpu9lCZX3qH5Rv2RGbUBp0zlC\n0F5JO5Jm5fUQ+0mgansXre54sYHCDZGbjV3AAlaKKofoQ0UkqFwRdxL7vyy0MeAr\nTCgS3+hN9jFBQ4aFhahExgKHS1c5N/5Ns0r1EinMRb2wX1W2d3HQIUaITtoG9vBp\nNoYUrkRoqQKBgQD+umCPVF6G/5hL0w4e1aMm67iFX4hiTrBD3tmFFfvE+nG/50xq\n1xu7pLG8z2phzKH8wsh3KpCPszLmvvquWxownGW3phJcy6/+80ZFHBSgLE9AdUkB\nYgSV67XHLQw5Vu2P6zuYGmiCFEHe8n3EXqoRS9QhP6D0G2bX+oDbHovFlQKBgFTE\nZ7PW9yaHl2zW+L1j70QsQ8m69zB4YzmmlO7rMxe1FlsI2IL3eKZzPNAi57n01330\nfQDajkSrm0BUKF/Ae2PV4h1yrVc6OGakaoqSLfISkKEVazvUHTJ51u9d6zaZ7HFZ\nw5xbC9/hv1jC9lpepIk4aXCY9x2sgZ3G+tknTwlxAoGBAOErAm6KUgsPkCNY7x2z\n8OAhThzO/p7k7YbNO2lpfKYiu/q26sceCnzPyU2Am4RKC1TVpzyG0TQdQjye+tFz\nOudbhsY3AypVBR6dDL2iuNxQ6Kps03V73ZFmbQTRq3SdfZbppzZIxrXpfntJQ9yA\nO+iDih7iJYo1uY2f9Z3OKTg0\n-----END PRIVATE KEY-----\n",
+  "client_email": "flask-api@jurifin-dashboard-pygsheets.iam.gserviceaccount.com",
+  "client_id": "117726994799932782068",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/flask-api%40jurifin-dashboard-pygsheets.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
