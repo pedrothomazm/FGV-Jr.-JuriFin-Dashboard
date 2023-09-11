@@ -17,7 +17,8 @@ def index(area, data_inicio, data_fim):
         'entradas_saidas_saldo': get_entradas_saidas_saldo(),
         'orcado_utilizado': get_orcado_utilizado(),
         'inadimplencia': get_inadimplencia(),
-        'lancamentos': get_lancamentos_area(area, data_inicio, data_fim)
+        'lancamentos': get_lancamentos_area(area, data_inicio, data_fim),
+        'porcentagem_utilizado': get_porcentagem_utilizado(area)
     }
     return dados
 
@@ -99,3 +100,14 @@ def get_lancamentos_area(area, data_inicio, data_fim, data_string=True, n=3):
                 break
 
     return retorno
+
+def get_porcentagem_utilizado(area):
+    wks = sh.worksheet_by_title('ORÇAMENTO ')
+
+    # Pega as últimas células com valores na colunas C e F
+    areas = get_coluna(wks, 3)
+    porc_orcado = get_coluna(wks, 6)
+    
+    for i in range(len(areas) - 1, -1, -1):
+        if areas[i] == area:
+            return porc_orcado[i]
