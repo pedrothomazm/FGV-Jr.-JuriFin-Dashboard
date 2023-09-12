@@ -196,3 +196,26 @@ def get_atual_meta():
     }
 
     return retorno
+
+def get_lancamentos(data_inicio, data_fim):
+    wks = sh.worksheet_by_title('LANÇAMENTOS')
+
+    datas = get_coluna(wks, 1)
+    origens = get_coluna(wks, 6)
+    areas = get_coluna(wks, 9)
+    lancamentos = get_coluna(wks, 10)
+
+    retorno = []
+
+    for i in range(len(areas) - 1, -1, -1):
+        if type(datas[i]) == str:
+            break
+        if datas[i] >= data_inicio and datas[i] <= data_fim:
+            retorno.append({
+                'Data': serial_number_to_date(datas[i]).strftime('%d/%m/%Y'),
+                'Origem': origens[i],
+                'Área': areas[i],
+                'Lançamento': lancamentos[i]
+            })
+
+    return retorno
