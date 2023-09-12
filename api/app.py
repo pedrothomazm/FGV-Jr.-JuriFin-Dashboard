@@ -11,6 +11,21 @@ gc = pygsheets.authorize(service_file='jurifin-dashboard-pygsheets-b0525e232b03.
 # Google Spreadsheet
 sh = gc.open('FGV Jr. 2023.02 - Planilha Financeira - Cópia Alterada')
 
+nomes_meses = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro"
+]
+
 @app.route("/<area>/<int:data_inicio>/<int:data_fim>")
 def index(area, data_inicio, data_fim):
     dados = {
@@ -18,17 +33,41 @@ def index(area, data_inicio, data_fim):
         'orcado_utilizado': get_orcado_utilizado(),
         'inadimplencia': get_inadimplencia(),
         'lancamentos': get_lancamentos_area(area, data_inicio, data_fim),
-        'porcentagem_utilizado': get_porcentagem_utilizado(area)
+        'porcentagem_utilizado': get_porcentagem_utilizado(area),
+        'atual_meta': get_atual_meta()
     }
     return dados
 
-def get_coluna(wks, i):
-    return wks.get_col(
+def get_coluna(
+        wks,
         i,
         returnas='matrix',
         include_tailing_empty=False,
         include_empty=False,
         value_render=pygsheets.ValueRenderOption.UNFORMATTED_VALUE
+    ):
+    return wks.get_col(
+        i,
+        returnas=returnas,
+        include_tailing_empty=include_tailing_empty,
+        include_empty=include_empty,
+        value_render=value_render
+    )
+
+def get_linha(
+        wks,
+        i,
+        returnas='matrix',
+        include_tailing_empty=False,
+        include_empty=False,
+        value_render=pygsheets.ValueRenderOption.UNFORMATTED_VALUE
+    ):
+    return wks.get_row(
+        i,
+        returnas=returnas,
+        include_tailing_empty=include_tailing_empty,
+        include_empty=include_empty,
+        value_render=value_render
     )
 
 def get_entradas_saidas_saldo():
@@ -89,6 +128,8 @@ def get_lancamentos_area(area, data_inicio, data_fim, data_string=True, n=3):
     retorno = []
 
     for i in range(len(areas) - 1, -1, -1):
+        if type(datas[i]) == str:
+            break
         if datas[i] >= data_inicio and datas[i] <= data_fim and areas[i] == area:
             retorno.append({
                 'Data': serial_number_to_date(datas[i]).strftime('%d/%m/%Y') if data_string else datas[i],
@@ -111,3 +152,44 @@ def get_porcentagem_utilizado(area):
     for i in range(len(areas) - 1, -1, -1):
         if areas[i] == area:
             return porc_orcado[i]
+
+def get_atual_meta():
+    wks_fluxo = sh.worksheet_by_title('FLUXO DE CAIXA')
+    wks_inadimplencia = sh.worksheet_by_title('CONTROLE DE INADIMPLÊNCIA')
+
+    # Encontra a linha com o SALDO FINAL
+    linha_saldo_final = get_coluna(wks_fluxo, 1).index('SALDO FINAL') + 1
+    saldos_finais = get_linha(wks_fluxo, linha_saldo_final, returnas='cell')
+    meses = get_linha(wks_fluxo, 2)
+
+    saldos = {}
+
+    for i in range(2, len(saldos_finais)):
+        if meses[i] > 6:
+            if saldos_finais[i].value == ' R$  -   ':
+                break
+            mes_anterior = nomes_meses[meses[i] - 2]
+            if mes_anterior in saldos:
+                saldo_anterior = saldos[mes_anterior]
+            else:
+                saldo_anterior = 0
+            
+            mes_atual = nomes_meses[meses[i] - 1]
+            saldos[mes_atual] = saldo_anterior + saldos_finais[i].value_unformatted
+    
+    meta = get_linha(wks_inadimplencia, 4)[-2]
+    metas_mensais = {}
+    incremento = meta / 6
+    meta_mensal = incremento
+
+    for i in range(6, 12):
+        mes = nomes_meses[i]
+        metas_mensais[mes] = meta_mensal
+        meta_mensal += incremento
+    
+    retorno = {
+        'saldos': saldos,
+        'metas_mensais': metas_mensais
+    }
+
+    return retorno
