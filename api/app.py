@@ -108,11 +108,14 @@ def get_inadimplencia():
     # Pega a última célula com valor na coluna B
     inadimplencia = get_coluna(wks, 2)[-1]
 
-    # retorno = {
-    #     'Inadimplência': inadimplencia
-    # }
+    porcentagem = get_linha(wks, 7)[-1]
 
-    return inadimplencia
+    retorno = {
+        'inadimplencia': inadimplencia,
+        'porcentagem': porcentagem
+    }
+
+    return retorno
 
 def serial_number_to_date(serial_number):
     return datetime.fromordinal(datetime(1900, 1, 1).toordinal() + serial_number - 2)
