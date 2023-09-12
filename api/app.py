@@ -38,7 +38,8 @@ def index(area, data_inicio, data_fim):
         'inadimplencia': get_inadimplencia(),
         'lancamentos': lancamentos,
         'porcentagem_utilizado': porcentagel_utilizado,
-        'atual_meta': get_atual_meta()
+        'atual_meta': get_atual_meta(),
+        'indicador_fluxo_de_caixa': get_indicador_fluxo_de_caixa()
     }
     return dados
 
@@ -238,3 +239,10 @@ def get_porcentagem_utilizado_geral():
     utilizado = get_coluna(wks, 5)[-1]
     
     return utilizado / orcado
+
+def get_indicador_fluxo_de_caixa():
+    wks = sh.worksheet_by_title('INDICADOR FLUXO DE CAIXA')
+
+    indicador = get_coluna(wks, 5)[-1]
+
+    return indicador
