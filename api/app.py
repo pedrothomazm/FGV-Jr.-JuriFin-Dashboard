@@ -28,12 +28,16 @@ nomes_meses = [
 
 @app.route("/<area>/<int:data_inicio>/<int:data_fim>")
 def index(area, data_inicio, data_fim):
+    lancamentos = get_lancamentos(data_inicio, data_fim) if area == "Geral" else get_lancamentos_area(area, data_inicio, data_fim)
+
+    porcentagel_utilizado = get_porcentagem_utilizado_geral() if area == "Geral" else get_porcentagem_utilizado(area)
+
     dados = {
         'entradas_saidas_saldo': get_entradas_saidas_saldo(),
         'orcado_utilizado': get_orcado_utilizado(),
         'inadimplencia': get_inadimplencia(),
-        'lancamentos': get_lancamentos_area(area, data_inicio, data_fim),
-        'porcentagem_utilizado': get_porcentagem_utilizado(area),
+        'lancamentos': lancamentos,
+        'porcentagem_utilizado': porcentagel_utilizado,
         'atual_meta': get_atual_meta()
     }
     return dados
@@ -134,11 +138,14 @@ def get_lancamentos_area(area, data_inicio, data_fim, data_string=True, n=3):
         if type(datas[i]) == str:
             break
         if datas[i] >= data_inicio and datas[i] <= data_fim and areas[i] == area:
+            data = serial_number_to_date(datas[i]).strftime('%d/%m/%Y') if data_string else datas[i]
+
             retorno.append({
-                'Data': serial_number_to_date(datas[i]).strftime('%d/%m/%Y') if data_string else datas[i],
+                'Data': data,
                 'Origem': origens[i],
                 'Lançamento': lancamentos[i]
             })
+
             n -= 1
             if n <= 0:
                 break
@@ -172,10 +179,7 @@ def get_atual_meta():
             if saldos_finais[i].value == ' R$  -   ':
                 break
             mes_anterior = nomes_meses[meses[i] - 2]
-            if mes_anterior in saldos:
-                saldo_anterior = saldos[mes_anterior]
-            else:
-                saldo_anterior = 0
+            saldo_anterior = saldos[mes_anterior] if mes_anterior in saldos else 0
             
             mes_atual = nomes_meses[meses[i] - 1]
             saldos[mes_atual] = saldo_anterior + saldos_finais[i].value_unformatted
@@ -197,7 +201,7 @@ def get_atual_meta():
 
     return retorno
 
-def get_lancamentos(data_inicio, data_fim):
+def get_lancamentos(data_inicio, data_fim, data_string=True, n=3):
     wks = sh.worksheet_by_title('LANÇAMENTOS')
 
     datas = get_coluna(wks, 1)
@@ -211,12 +215,18 @@ def get_lancamentos(data_inicio, data_fim):
         if type(datas[i]) == str:
             break
         if datas[i] >= data_inicio and datas[i] <= data_fim:
+            data = serial_number_to_date(datas[i]).strftime('%d/%m/%Y') if data_string else datas[i]
+
             retorno.append({
-                'Data': serial_number_to_date(datas[i]).strftime('%d/%m/%Y'),
+                'Data': data,
                 'Origem': origens[i],
                 'Área': areas[i],
                 'Lançamento': lancamentos[i]
             })
+
+            n -= 1
+            if n <= 0:
+                break
 
     return retorno
 
