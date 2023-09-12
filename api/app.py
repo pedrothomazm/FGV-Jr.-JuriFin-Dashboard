@@ -219,3 +219,12 @@ def get_lancamentos(data_inicio, data_fim):
             })
 
     return retorno
+
+def get_porcentagem_utilizado_geral():
+    wks = sh.worksheet_by_title('ORÇAMENTO ')
+
+    # Pega as últimas células com valores na colunas C e F
+    orcado = get_coluna(wks, 4)[-1]
+    utilizado = get_coluna(wks, 5)[-1]
+    
+    return utilizado / orcado
