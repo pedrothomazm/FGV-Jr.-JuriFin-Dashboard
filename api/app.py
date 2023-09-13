@@ -1,8 +1,11 @@
 from flask import Flask
+from flask_cors import CORS
 import pygsheets
 from datetime import datetime
 
 app = Flask(__name__)
+# Adicionando app.py ao CORS para permitir comunicação com o front
+CORS(app)
 # Permite que o JSON retornado não seja em ASCII, mas sim em UTF-8
 app.json.ensure_ascii = False
 
