@@ -6,6 +6,8 @@ from datetime import datetime
 app = Flask(__name__)
 # Adicionando app.py ao CORS para permitir comunicação com o front
 CORS(app)
+# Retirando ordenamento do json
+app.json.sort_keys = False
 # Permite que o JSON retornado não seja em ASCII, mas sim em UTF-8
 app.json.ensure_ascii = False
 
