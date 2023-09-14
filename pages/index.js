@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import CardBalance from '@/components/card-saldo'
 import CardIncomes from '@/components/card-entradas'
 import CardExpenses from '@/components/card-saidas'
+import DoughnutInadimplencia from '@/components/doughnut-inadimplencia'
 
 export default function Home({data}) {
   const[sheetData, setSheetData] = useState()
@@ -74,11 +75,11 @@ export default function Home({data}) {
             <div className='col-start-1 col-end-4 row-start-5 row-end-8 bg-gray-100 rounded-3xl'>
               <LineChart data={sheetData}/>
             </div>
-            <div className='col-start-4 col-end-7 row-start-1 row-end-5 bg-gray-100 rounded-3xl'>
-
+            <div className='col-start-4 col-end-7 row-start-1 row-end-5 bg-gray-100 rounded-3xl grid grid-cols-3'>
+              
             </div>
-            <div className='col-start-4 col-end-7 row-start-5 row-end-8 bg-gray-100 rounded-3xl'>
-
+            <div className='col-start-4 col-end-7 row-start-5 row-end-8 bg-gray-100 rounded-3xl grid grid-cols-2'>
+              <DoughnutInadimplencia data={sheetData}/>
             </div>
           </div>
         </div>
