@@ -4,7 +4,7 @@ function CardTransactions({ data }) {
 	const [transactions, setTransactions] = useState(null)
 
 	useEffect(() => {
-		if (data){
+		if (data && data.lancamentos){
 			const transactionsData = data.lancamentos
 			setTransactions(transactionsData)
 		}
