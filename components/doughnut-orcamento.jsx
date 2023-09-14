@@ -40,11 +40,11 @@ function DoughnutOrcamento({ data }) {
 						label: 'Orçamento utilizado',
 						data: [porcentagemOrcamentoUtilizado, porcentagemRestante],
 						backgroundColor: [
-							'rgba(108, 229, 232)',
+							'rgba(161, 173, 168)',
 							'rgba(34, 46, 102)'
 						],
 						borderColor: [
-							'rgba(108, 229, 232)',
+							'rgba(161, 173, 168)',
 							'rgba(34, 46, 102)'
 						],
 						borderWidth: 1

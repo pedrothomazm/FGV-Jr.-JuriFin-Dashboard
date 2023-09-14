@@ -1,13 +1,23 @@
 import React from 'react'
+import Image from 'next/image'
 
 const Header = () => {
   return (
 	<div className='flex justify-between px-10 pt-4'>
     <div>
-      <p>Dashboard Juri/Fin</p>
+      <p className='text-xl font-bold text-[#222E66]'>Dashboard - Jurídico/Financero - FGV Jr.</p>
     </div>
     <div>
-      <p>Logo FGV Jr.</p>
+      <Image 
+      src="/logotipo.png"
+      alt="Logo FGV Jr."
+      style={{
+        width: '100%',
+        height: 'auto',
+      }}
+      height={300}
+      width={500}
+      />  
     </div> 
   </div>
   )

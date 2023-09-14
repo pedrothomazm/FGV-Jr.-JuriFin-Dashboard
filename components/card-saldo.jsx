@@ -12,7 +12,7 @@ function CardBalance({ data }) {
 
 	return(
 		<>
-			<p className="text-xl font-bold">
+			<p className="text-xl font-bold">R$ 
 			{
 				(balance) ?
 					balance:

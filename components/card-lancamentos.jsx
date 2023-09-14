@@ -14,7 +14,7 @@ function CardTransactions({ data }) {
 		<>
 			<div className="w-full h-full col-span-2 flex flex-col justify-evenly">
 				<div className="w-full px-2 h-1/5 flex justify-center items-center">
-					<p className="text-xl text-[#222E66]">
+					<p className="text-xl font-bold">
 						Últimas entradas e saídas
 					</p>
 				</div>
