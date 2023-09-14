@@ -10,6 +10,21 @@ function CardTransactions({ data }) {
 		}
 	}, [data])
 
+	let colorsArray = ["dark", "dark", "dark"]
+
+	if(transactions){
+		colorsArray = []
+		transactions.forEach(element => {
+			if (element.Lançamento <= 0){
+				colorsArray.push("red")
+			}
+			else {
+				colorsArray.push("green")
+			}
+		});
+	}
+	
+
 	return(
 		<>
 			<div className="w-full h-full col-span-2 flex flex-col justify-evenly">
@@ -33,7 +48,7 @@ function CardTransactions({ data }) {
 								""
 						} 
 					</p>
-					<p className="text-basic">R$
+					<p className={"text-basic text-" + colorsArray[0]}>R$
 						{
 							(transactions) ?
 								transactions[0].Lançamento.toFixed(2) :
@@ -56,7 +71,7 @@ function CardTransactions({ data }) {
 								""
 						} 
 					</p>
-					<p className="text-basic">R$
+					<p className={"text-basic text-" + colorsArray[1]}>R$
 						{
 							(transactions) ?
 								transactions[1].Lançamento.toFixed(2) :
@@ -79,7 +94,7 @@ function CardTransactions({ data }) {
 								""
 						} 
 					</p>
-					<p className="text-basic">R$
+					<p className={"text-basic text-" + colorsArray[2]}>R$
 						{
 							(transactions) ?
 								transactions[2].Lançamento.toFixed(2) :

@@ -10,9 +10,18 @@ function CardBalance({ data }) {
 		}
 	}, [data])
 
+	let color = "dark"
+
+	if(balance > 0){
+		color = "green"
+	}
+	else{
+		color = "red"
+	}
+
 	return(
 		<>
-			<p className="text-xl font-bold">R$ 
+			<p className={"text-xl font-bold text-" + color}>R$ 
 			{
 				(balance) ?
 					balance:

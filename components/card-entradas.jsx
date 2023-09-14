@@ -12,7 +12,7 @@ function CardIncomes({ data }) {
 
 	return(
 		<>
-			<p className="text-xl font-bold">R$ 
+			<p className="text-xl font-bold text-green">R$ 
 			{
 				(income) ?
 					income:

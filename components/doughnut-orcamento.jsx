@@ -54,19 +54,13 @@ function DoughnutOrcamento({ data }) {
 		}
 	}, [data]);
 
-	// useEffect(() => {
-	// 	if(data){
-			
-	// 	}
-	// }, [data])
-
 	return(
 		<>
 			<div className="w-full h-full pt-1 flex flex-col justify-center col-span-1">
 				<p className="self-center text-lg font-bold">
 					Orçamento da área
 				</p>
-				<p className="self-center">
+				<p className="self-center text-">
 					{
 						(chartData) ?
 							porcentagemOrcamentoUtilizado:

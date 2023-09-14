@@ -10,13 +10,14 @@ import CardExpenses from '@/components/card-saidas'
 import DoughnutInadimplencia from '@/components/doughnut-inadimplencia'
 import DoughnutOrcamento from '@/components/doughnut-orcamento'
 import CardTransactions from '@/components/card-lancamentos'
+import CardCashFlow from '@/components/card-fluxo-caixa'
 
 export default function Home({data}) {
   const[sheetData, setSheetData] = useState()
   
   useEffect(() => {
 		async function getData () {
-			const response = await fetch("http://127.0.0.1:5328/Digital/1000/100000")
+			const response = await fetch("http://127.0.0.1:5328/Geral/1000/100000")
 			const data = await response.json()
 			
 			setSheetData(data)
@@ -81,6 +82,7 @@ export default function Home({data}) {
               <CardTransactions data={sheetData} />
             </div>
             <div className='col-start-4 col-end-7 row-start-5 row-end-8 bg-gray-100 rounded-3xl grid grid-cols-2'>
+              <CardCashFlow data={sheetData} />
               <DoughnutInadimplencia data={sheetData} />
             </div>
           </div>
