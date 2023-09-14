@@ -1,7 +1,5 @@
-import { URL_completa } from "./url";
-import { jsonData } from "./data";
-
 import { useState, useEffect } from "react";
+import { Bar } from 'react-chartjs-2' ;
 
 import {
 	Chart as ChartJS,
@@ -12,8 +10,6 @@ import {
 	Tooltip,
 	Legend,
 } from 'chart.js'
-import { Bar } from 'react-chartjs-2' ;
-// import faker from 'faker';
 
 ChartJS.register(
 	CategoryScale,
@@ -38,58 +34,58 @@ export const options = {
 	}
 };
 
-const BarChart = () => {	
-	const [planilhaData, setPlanilhaData] = useState(null)
-	
-	useEffect(() => {
-		async function getData () {
-			const response = await fetch("http://127.0.0.1:5328/Geral/1000/100000")
-			const data = await response.json()
-			
-			setPlanilhaData(data)
-		}
-		getData()
-	}, [])
-	
-	// Labels das areas
-	const labels = Object.keys(planilhaData.orcado_utilizado)
-	// criando arrays vazios e preenchendo com os valors utilizados e or
-	// çados de cada área
-	let orcamentosArray = []
-	for (const area in planilhaData.orcado_utilizado) {
-		if (planilhaData.orcado_utilizado.hasOwnProperty(area)) {
-		  const orcamento = planilhaData.orcado_utilizado[area].Orçamento;
-		  orcamentosArray.push(orcamento);
-		}
-	}
-	let utilizadosArray = []
-	for (const area in planilhaData.orcado_utilizado) {
-		if (planilhaData.orcado_utilizado.hasOwnProperty(area)) {
-		  const orcamento = planilhaData.orcado_utilizado[area].Utilizado;
-		  utilizadosArray.push(orcamento);
-		}
-	}
+function BarChart({ data }) {	
+	const [chartData, setChartData] = useState(null)
 
-	const chartData = {
-		labels,
-		datasets: [
-			{
-				label: "Orçamento",
-				data: orcamentosArray,
-				backgroundColor: 'rgba(34, 46, 102, 1)',
-			},
-			{
-				label: "Utilizado",
-				data: utilizadosArray,
-				backgroundColor: 'rgba(161, 173, 168)',
-			},
-		]
-	}
+	useEffect(()=>{
+		if (data) {
+			// Labels das areas
+			const labels = Object.keys(data.orcado_utilizado)
+			// criando arrays vazios e preenchendo com os valors utilizados e or
+			// çados de cada área
+			let budgetsArray = []
+			for (const area in data.orcado_utilizado) {
+				if (data.orcado_utilizado.hasOwnProperty(area)) {
+				  const budget = data.orcado_utilizado[area].Orçamento;
+				  budgetsArray.push(budget);
+				}
+			}
+			let utilizedArray = []
+			for (const area in data.orcado_utilizado) {
+				if (data.orcado_utilizado.hasOwnProperty(area)) {
+				  const utilized = data.orcado_utilizado[area].Utilizado;
+				  utilizedArray.push(utilized);
+				}
+			}
+		
+			setChartData({
+				labels,
+				datasets: [
+					{
+						label: "Orçamento",
+						data: budgetsArray,
+						backgroundColor: 'rgba(34, 46, 102, 1)',
+					},
+					{
+						label: "Utilizado",
+						data: utilizedArray,
+						backgroundColor: 'rgba(161, 173, 168)',
+					},
+				]
+			})
+		}
+	}, [data])
+	
+	console.log(chartData)
 	
 	return (
 		<>
 			<div className="w-full px-2 h-full">
-				<Bar options={options} data={chartData} />
+				{
+					(chartData) ? 	
+						<Bar options={options} data={chartData} />:
+						""
+				}
 			</div>
 		</>
 	)
