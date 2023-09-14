@@ -4,6 +4,9 @@ import BarChart from '@/components/barchart-orcamento'
 import LineChart from '@/components/linechart-meta'
 
 import { useState, useEffect } from 'react'
+import CardBalance from '@/components/card-saldo'
+import CardIncomes from '@/components/card-entradas'
+import CardExpenses from '@/components/card-saidas'
 
 export default function Home({data}) {
   const[sheetData, setSheetData] = useState()
@@ -36,37 +39,33 @@ export default function Home({data}) {
         <div className='h-full pt-5 px-10 bg-gray-200 flex items-stretch'>
           <div className='bg-white h-full w-full rounded-3xl grid grid-rows-7 grid-cols-6 gap-2'>
             <div className='row-span-1 col-span-1 bg-gray-100 rounded-3xl grid grid-rows-2 grid-flow-col-1'>
-              <div className='row-span-1 col-span-1 flex justify-center font-serif'>
+              <div className='row-span-1 col-span-1 flex justify-center font-serif items-center'>
                 <p>
                   Saldo geral
                 </p>
               </div>
-              <div className='row-span-1 col-span-1 flex justify-center'>
-                
+              <div className='row-span-1 col-span-1 flex justify-center items-bottom'>
+                <CardBalance data={sheetData} />
               </div>
             </div>
             <div className='col-span-1 bg-gray-100 rounded-3xl grid grid-rows-2 grid-flow-col-1'>
-              <div className='row-span-1 col-span-1 flex justify-center'>
+              <div className='row-span-1 col-span-1 flex justify-center items-center'>
                 <p>
                   Entradas
                 </p>
               </div>
-              <div className='row-span-1 col-span-1 flex justify-center'>
-                <p className='text-xl font-bold'>
-                  R$ 8000
-                </p>
+              <div className='row-span-1 col-span-1 flex justify-center items-bottom'>
+                <CardIncomes data={sheetData} />
               </div>
             </div>
             <div className='col-span-1 bg-gray-100 rounded-3xl grid grid-rows-2 grid-flow-col-1'>
-              <div className='row-span-1 col-span-1 flex justify-center'>
+              <div className='row-span-1 col-span-1 flex justify-center items-center'>
                 <p>
                   Saídas
                 </p>
               </div>
-              <div className='row-span-1 col-span-1 flex justify-center'>
-                <p className='text-xl font-bold'>
-                  R$ 3000
-                </p>
+              <div className='row-span-1 col-span-1 flex justify-center items-bottom'>
+                <CardExpenses data={sheetData} />
               </div>
             </div>
             <div className='col-start-1 col-end-4 row-start-2 row-end-5 bg-gray-100 rounded-3xl'>
