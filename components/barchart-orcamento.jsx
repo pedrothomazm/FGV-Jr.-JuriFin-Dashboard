@@ -28,7 +28,7 @@ export const options = {
 			postion: 'top'
 		},
 		title:{
-			display: true,
+			display: false,
 			text: "Orçamento de cada área"
 		}
 	}
@@ -80,12 +80,15 @@ function BarChart({ data }) {
 	
 	return (
 		<>
-			<div className="w-full px-2 h-full">
-				{
-					(chartData) ? 	
-						<Bar options={options} data={chartData} />:
-						""
-				}
+			<div className="w-full px-2 h-full flex flex-col justify-items-center">
+				<p className="text-lg self-center font-bold">Orçado x Utilizado</p>
+				<div className="p-2 w-full h-full flex justify-items-center">
+					{
+						(chartData) ? 	
+							<Bar options={options} data={chartData} />:
+							""
+					}
+				</div>
 			</div>
 		</>
 	)

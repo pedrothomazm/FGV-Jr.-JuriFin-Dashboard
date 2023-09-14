@@ -30,7 +30,7 @@ export const options = {
 			postion: 'bottom'
 		},
 		title:{
-			display: true,
+			display: false,
 			text: "Meta"
 		}
 	}
@@ -68,13 +68,15 @@ function LineChart ({data}) {
 	
 	return (
 		<>
-			<div className="w-full px-2 h-full">
-				{
-					(chartData) ?
-						<Line options={options} data={chartData} />:
-						""
-				}
-				
+			<div className="w-full px-2 h-full flex flex-col justify-center">
+				<p className="text-lg self-center font-bold">Meta atingida</p>
+				<div className="p-2 w-full h-full flex justify-items-center">
+					{
+						(chartData) ?
+							<Line options={options} data={chartData} />:
+							""
+					}
+				</div>
 			</div>
 		</>
 	)
