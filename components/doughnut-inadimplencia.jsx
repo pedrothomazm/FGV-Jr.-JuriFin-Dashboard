@@ -60,16 +60,9 @@ function DoughnutInadimplencia({ data }) {
 
 	return(
 		<>
-			<div className="w-full h-full pt-1 flex flex-col align-middle col-span-1">
+			<div className="w-full h-full pt-1 flex flex-col align-middle col-span-1 justify-center">
 				<p className="self-center text-lg font-bold">
 					Inadimplência	
-				</p>
-				<p className="self-center">
-					{
-						(chartData) ?
-							"R$" + valorInadimplencia:
-							"Carregando dados"
-					}	
 				</p>
 				<div className=" w-full h-1/2 p-2 flex justify-center">
 					{
@@ -83,6 +76,13 @@ function DoughnutInadimplencia({ data }) {
 						(chartData) ?
 							porcentagemInadimplencia + "% de inadimplência":
 							""
+					}	
+				</p>
+				<p className="self-center">
+					{
+						(chartData) ?
+							"R$" + valorInadimplencia:
+							"Carregando dados"
 					}	
 				</p>
 			</div>
