@@ -174,21 +174,21 @@ def get_atual_meta():
     wks_inadimplencia = sh.worksheet_by_title('CONTROLE DE INADIMPLÊNCIA')
 
     # Encontra a linha com o SALDO FINAL
-    linha_saldo_final = get_coluna(wks_fluxo, 1).index('SALDO FINAL') + 1
-    saldos_finais = get_linha(wks_fluxo, linha_saldo_final, returnas='cell')
+    linha_saldo_final = get_coluna(wks_fluxo, 1).index('ENTRADAS') + 1
+    entradas_finais = get_linha(wks_fluxo, linha_saldo_final, returnas='cell')
     meses = get_linha(wks_fluxo, 2)
 
-    saldos = {}
+    entradas = {}
 
-    for i in range(2, len(saldos_finais)):
+    for i in range(2, len(entradas_finais)):
         if meses[i] > 6:
-            if saldos_finais[i].value == ' R$  -   ':
+            if entradas_finais[i].value == ' R$  -   ':
                 break
             mes_anterior = nomes_meses[meses[i] - 2]
-            saldo_anterior = saldos[mes_anterior] if mes_anterior in saldos else 0
+            saldo_anterior = entradas[mes_anterior] if mes_anterior in entradas else 0
             
             mes_atual = nomes_meses[meses[i] - 1]
-            saldos[mes_atual] = saldo_anterior + saldos_finais[i].value_unformatted
+            entradas[mes_atual] = saldo_anterior + entradas_finais[i].value_unformatted
     
     meta = get_linha(wks_inadimplencia, 4)[-2]
     metas_mensais = {}
@@ -201,7 +201,7 @@ def get_atual_meta():
         meta_mensal += incremento
     
     retorno = {
-        'saldos': saldos,
+        'entradas': entradas,
         'metas_mensais': metas_mensais
     }
 
