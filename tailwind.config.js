@@ -14,6 +14,9 @@ module.exports = {
       gridRowEnd: {
         '8': '8',
       },
+      height: {
+        '9/10': '90vh',
+      }
     },
     fontFamily: {
       // Comma-delimited format:

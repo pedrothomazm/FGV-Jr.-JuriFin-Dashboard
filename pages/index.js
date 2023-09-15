@@ -17,7 +17,7 @@ export default function Home({data}) {
   
   useEffect(() => {
 		async function getData () {
-			const response = await fetch("http://127.0.0.1:5328/Presidencia/1000/100000")
+			const response = await fetch("http://127.0.0.1:5328/Geral/1000/100000")
 			const data = await response.json()
 			
 			setSheetData(data)
@@ -39,7 +39,7 @@ export default function Home({data}) {
       </Head>
       <main className="bg-gray-200 h-screen">
         <Header />
-        <div className='h-full pt-5 px-10 bg-gray-200 flex items-stretch'>
+        <div className='h-9/10 pt-5 px-10 bg-gray-200 flex items-stretch'>
           <div className='bg-white h-full w-full rounded-3xl grid grid-rows-7 grid-cols-6 gap-2'>
             <div className='row-span-1 col-span-1 bg-gray-100 rounded-3xl grid grid-rows-2 grid-flow-col-1'>
               <div className='row-span-1 col-span-1 flex justify-center font-serif items-center'>
