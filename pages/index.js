@@ -26,6 +26,12 @@ const areas = [
 ]
 
 const meses = [
+  "Janeiro",
+  "Fevereiro",
+  "Março",
+  "Abril",
+  "Maio",
+  "Junho",
   "Julho",
   "Agosto",
   "Setembro",
@@ -44,6 +50,7 @@ export default function Home({data}) {
 		async function getData (area, dataInicial, dataFinal) {
       const areaEscaped = area.replace(" ", "%20")
       const url = `http://127.0.0.1:5328/${areaEscaped}/${dataInicial}/${dataFinal}`
+      console.log(url)
       const response = await fetch(url)
 			//const response = await fetch("http://127.0.0.1:5328/Geral/1000/100000")
 			const data = await response.json()
@@ -128,7 +135,7 @@ export default function Home({data}) {
             </div>
             <div className='col-start-4 col-end-7 row-start-1 row-end-5 bg-gray-100 rounded-3xl grid grid-cols-3 grid-rows-4 justify-items-evenly'>
               <div className='col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col h-1/5 w-full self-center'>
-                <DropDownMenu buttonLabel={area} items={areas} onChange={setArea} className="w-[25%] relative"/>
+                <DropDownMenu buttonLabel={area} items={areas} onChange={setArea} className="w-[25%]"/>
                 <p className='font-bold self-center'>Filtrar por área</p>
               </div>
               <div className='col-start-2 col-end-4 row-start-1 row-end-2 h-full w-full px-6 flex flex-col pt-12 self-center'>
