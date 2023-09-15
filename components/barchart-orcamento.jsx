@@ -23,6 +23,7 @@ ChartJS.register(
 export const options = {
 	responsive: true,
 	maintainAspectRatio: false,
+	borderRadius: 4,
 	plugins: {
 		legend: {
 			postion: 'top'
@@ -86,7 +87,7 @@ function BarChart({ data }) {
 					{
 						(chartData) ? 	
 							<Bar options={options} data={chartData} />:
-							"Dados carregando ou indisponiveis"
+							"Carregando dados"
 					}
 				</div>
 			</div>

@@ -11,7 +11,7 @@ function CardBalance({ data }) {
 	}, [data])
 	
 	let color = ""
-	let textSize = ""
+	let textSize = "sm"
 	let textFont = ""
 
 	if(balance && balance > 0){
@@ -31,7 +31,7 @@ function CardBalance({ data }) {
 			{
 				(balance) ?
 					"R$" + balance:
-					"Dados carregando ou indisponíveis"
+					"Carregando dados"
 			}
 			</p>
 		</>

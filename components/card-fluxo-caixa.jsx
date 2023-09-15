@@ -35,7 +35,7 @@ function CardCashFlow({ data }) {
 				{
 					(cashFlow) ?
 						cashFlow + "%":
-						"Dados carregando ou indisponíveis"
+						"Carregando dados"
 				}
 				</p>
 			</div>

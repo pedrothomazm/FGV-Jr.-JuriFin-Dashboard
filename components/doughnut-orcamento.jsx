@@ -27,31 +27,37 @@ export const options = {
 function DoughnutOrcamento({ data }) {
 	const [porcentagemOrcamentoUtilizado, setPorcentagemOrcamentoUtilizado] = useState(null)
 	const [chartData, setChartData] = useState(null)
+	const [message, setMessage] = useState("Carregando os dados")
 
 	useEffect(() => {
-		if(data && data.porcentagem_utilizado){
-			setPorcentagemOrcamentoUtilizado(data.porcentagem_utilizado.toFixed(2) * 100)
-			const porcentagemRestante = 100 - porcentagemOrcamentoUtilizado
-
-			setChartData({
-				labels: ['Utilizado', 'Restante'],
-				datasets: [
-					{
-						label: 'Orçamento utilizado',
-						data: [porcentagemOrcamentoUtilizado, porcentagemRestante],
-						backgroundColor: [
-							'rgba(161, 173, 168)',
-							'rgba(34, 46, 102)'
-						],
-						borderColor: [
-							'rgba(161, 173, 168)',
-							'rgba(34, 46, 102)'
-						],
-						borderWidth: 1
-					},
-				],
-			})
+		if(data){
+			if(!(data.porcentagem_utilizado)){
+				setMessage("Dados indisponíveis")
+			}
+			else{
+				setPorcentagemOrcamentoUtilizado(data.porcentagem_utilizado.toFixed(2) * 100)
+				const porcentagemRestante = 100 - porcentagemOrcamentoUtilizado
+				
+				setChartData({
+					labels: ['Utilizado', 'Restante'],
+					datasets: [
+						{
+							label: 'Orçamento utilizado',
+							data: [porcentagemOrcamentoUtilizado, porcentagemRestante],
+							backgroundColor: [
+								'rgba(161, 173, 168)',
+								'rgba(34, 46, 102)'
+							],
+							borderColor: [
+								'rgba(161, 173, 168)',
+								'rgba(34, 46, 102)'
+							],
+							borderWidth: 1
+						},
+					],
+				})
 		}
+			}
 	}, [data]);
 
 	return(
@@ -64,7 +70,7 @@ function DoughnutOrcamento({ data }) {
 					{
 						(chartData) ?
 							porcentagemOrcamentoUtilizado + "% utilizado":
-							"Dados carregando ou indisponíveis"
+							message
 					}	
 				</p>
 				<div className=" w-full h-1/2 p-2 flex justify-center">

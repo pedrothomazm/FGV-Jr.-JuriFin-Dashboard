@@ -10,7 +10,7 @@ function CardIncomes({ data }) {
 		}
 	}, [data])
 
-	let textSize = ""
+	let textSize = "sm"
 	let textFont = ""
 	let textColor = ""
 
@@ -26,7 +26,7 @@ function CardIncomes({ data }) {
 			{
 				(income) ?
 					"R$" + income:
-					"Dados carregando ou indisponíveis"
+					"Carregando dados"
 			}
 			</p>
 		</>

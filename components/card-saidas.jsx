@@ -10,7 +10,7 @@ function CardExpenses({ data }) {
 		}
 	}, [data])
 
-	let textSize = ""
+	let textSize = "sm"
 	let textFont = ""
 	let textColor = ""
 
@@ -26,7 +26,7 @@ function CardExpenses({ data }) {
 			{
 				(expense) ?
 					"R$" + expense:
-					"Dados carregando ou indisponíveis"
+					"Carregando dados"
 			}
 			</p>
 		</>
