@@ -33,7 +33,7 @@ function CardTransactions({ data }) {
 
 	return(
 		<>
-			<div className="w-full h-full col-span-2 flex flex-col justify-evenly">
+			<div className="w-full h-full col-span-3 row-start-2 row-end-5 flex flex-col justify-evenly">
 				<div className="w-full px-2 h-1/5 flex justify-center items-center">
 					<p className="text-xl font-bold">
 						Últimas entradas e saídas
@@ -65,21 +65,21 @@ function CardTransactions({ data }) {
 				<div className="w-full px-2 flex flex-row justify-between items-center">
 					<p className="text-basic">
 						{
-							(transactions) ?
+							(transactions && transactions[1]) ?
 								transactions[1].Origem:
 								"" 
 						} 
 					</p>
 					<p className="text-basic">
 						{
-							(transactions) ?
+							(transactions && transactions[1]) ?
 								transactions[1].Data :
 								""
 						} 
 					</p>
 					<p className={"text-basic text-" + colorsArray[1]}>
 						{
-							(transactions) ?
+							(transactions && transactions[1]) ?
 								"R$" + transactions[1].Lançamento.toFixed(2) :
 								""
 						}
@@ -88,21 +88,21 @@ function CardTransactions({ data }) {
 				<div className="w-full px-2 flex flex-row justify-between items-center">
 					<p className="text-basic">
 						{
-							(transactions) ?
+							(transactions && transactions[2]) ?
 								transactions[2].Origem:
 								"" 
 						} 
 					</p>
 					<p className="text-basic">
 						{
-							(transactions) ?
+							(transactions && transactions[2]) ?
 								transactions[2].Data :
 								""
 						} 
 					</p>
 					<p className={"text-basic text-" + colorsArray[2]}>
 						{
-							(transactions) ?
+							(transactions && transactions[2]) ?
 								"R$" + transactions[2].Lançamento.toFixed(2) :
 								""
 						}

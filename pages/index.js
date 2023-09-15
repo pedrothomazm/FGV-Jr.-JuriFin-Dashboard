@@ -126,22 +126,26 @@ export default function Home({data}) {
             <div className='col-start-1 col-end-4 row-start-5 row-end-8 bg-gray-100 rounded-3xl'>
               <LineChart data={sheetData} />
             </div>
-            <div className='col-start-4 col-end-7 row-start-1 row-end-5 bg-gray-100 rounded-3xl grid grid-cols-3'>
-              <div className='relative w-25%'>
+            <div className='col-start-4 col-end-7 row-start-1 row-end-5 bg-gray-100 rounded-3xl grid grid-cols-3 grid-rows-4 justify-items-evenly'>
+              <div className='col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col h-1/5 w-full self-center'>
                 <DropDownMenu buttonLabel={area} items={areas} onChange={setArea} className="w-[25%] relative"/>
+                <p className='font-bold self-center'>Filtrar por área</p>
               </div>
-              <RangeSlider items={meses} onSet={(values, handle) => {
-                if (handle === 0) {
-                  setMesInicial(values[handle])
-                } else {
-                  setMesFinal(values[handle])
-                }
-              }} />
-              <DoughnutOrcamento data={sheetData} />
+              <div className='col-start-2 col-end-4 row-start-1 row-end-2 h-full w-full px-6 flex flex-col pt-12 self-center'>
+                <RangeSlider items={meses} onSet={(values, handle) => {
+                  if (handle === 0) {
+                    setMesInicial(values[handle])
+                  } else {
+                    setMesFinal(values[handle])
+                  }
+                }} />
+                <p className='font-bold self-center'>Filtrar período de tempo</p>
+              </div>
               <CardTransactions data={sheetData} />
             </div>
-            <div className='col-start-4 col-end-7 row-start-5 row-end-8 bg-gray-100 rounded-3xl grid grid-cols-2'>
+            <div className='col-start-4 col-end-7 row-start-5 row-end-8 bg-gray-100 rounded-3xl grid grid-cols-3'>
               <CardCashFlow data={sheetData} />
+              <DoughnutOrcamento data={sheetData} />
               <DoughnutInadimplencia data={sheetData} />
             </div>
           </div>

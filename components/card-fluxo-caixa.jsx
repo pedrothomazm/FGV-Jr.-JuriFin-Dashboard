@@ -30,7 +30,7 @@ function CardCashFlow({ data }) {
 	return(
 		<>
 			<div className="col-span-1 flex flex-col justify-center">
-				<p className="text-xl font-bold text-center">Indicador de fluxo de caixa</p>
+				<p className="text-xl font-bold text-center">Indicador fluxo de caixa</p>
 				<p className={"text-" + textSize + " font-" + textFont + " text-center text-" + textColor}>
 				{
 					(cashFlow) ?

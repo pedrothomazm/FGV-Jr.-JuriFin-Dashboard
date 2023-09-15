@@ -45,8 +45,15 @@ function LineChart ({data}) {
 			let goalsArray = []
 			for (const month in data.atual_meta.metas_mensais) {
 				if (data.atual_meta.metas_mensais.hasOwnProperty(month)) {
-				const meta = data.atual_meta.metas_mensais[month];
-				goalsArray.push(meta);
+					const meta = data.atual_meta.metas_mensais[month];
+					goalsArray.push(meta);
+				}
+			}
+			let incomesArray = []
+			for (const month in data.atual_meta.entradas) {
+				if (data.atual_meta.entradas.hasOwnProperty(month)) {
+					const meta = data.atual_meta.entradas[month];
+					incomesArray.push(meta);
 				}
 			}
 
@@ -54,11 +61,18 @@ function LineChart ({data}) {
 				labels,
 				datasets: [
 					{
-						label: "Meta",
+						label: "Meta móvel",
 						data: goalsArray,
 						borderColor: 'rgba(34, 46, 102, 1)',
 						backgroundColor: 'rgba(34, 46, 102, 1)',
 					},
+					{
+						label: "Atual",
+						data: incomesArray,
+						borderColor: 'rgba(161, 173, 168)',
+						backgroundColor: 'rgba(161, 173, 168)',
+					}
+
 				]
 			})
 		}

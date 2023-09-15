@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import noUiSlider from "nouislider";
 import 'nouislider/dist/nouislider.css'; // Import the CSS
 
+noUiSlider.cssClasses.target += ' slider-color';
+
 const RangeSlider = ({items, onSet}) => {
   const sliderRef = useRef(null);
 
