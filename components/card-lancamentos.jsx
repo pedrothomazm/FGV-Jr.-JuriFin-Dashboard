@@ -2,11 +2,17 @@ import { useState, useEffect } from "react";
 
 function CardTransactions({ data }) {
 	const [transactions, setTransactions] = useState(null)
+	const [message, setMessage] = useState("Carregando dados")
 
 	useEffect(() => {
-		if (data && data.lancamentos && data.lancamentos.length > 0){
-			const transactionsData = data.lancamentos
-			setTransactions(transactionsData)
+		if (data){
+			if(!data.lancamentos || data.lancamentos.length == 0){
+				setMessage("Dados indisponíveis")
+			}
+			else{
+				const transactionsData = data.lancamentos
+				setTransactions(transactionsData)
+			}
 		}
 	}, [data])
 
@@ -38,14 +44,14 @@ function CardTransactions({ data }) {
 						{
 							(transactions) ?
 								transactions[0].Origem:
-								"" 
+								""
 						} 
 					</p>
 					<p className="text-basic">
 						{
 							(transactions) ?
 								transactions[0].Data :
-								""
+								message
 						} 
 					</p>
 					<p className={"text-basic text-" + colorsArray[0]}>
@@ -68,7 +74,7 @@ function CardTransactions({ data }) {
 						{
 							(transactions) ?
 								transactions[1].Data :
-								"Dados carregando ou indisponiveis"
+								""
 						} 
 					</p>
 					<p className={"text-basic text-" + colorsArray[1]}>

@@ -75,7 +75,7 @@ function DoughnutInadimplencia({ data }) {
 					{
 						(chartData) ?
 							"R$" + valorInadimplencia:
-							"Dados carregando ou indisponíveis"
+							"Carregando dados"
 					}	
 				</p>
 				<div className=" w-full h-3/4 p-2 flex justify-center">
