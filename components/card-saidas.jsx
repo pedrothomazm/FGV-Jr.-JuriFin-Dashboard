@@ -10,13 +10,23 @@ function CardExpenses({ data }) {
 		}
 	}, [data])
 
+	let textSize = ""
+	let textFont = ""
+	let textColor = ""
+
+	if(expense){
+		textSize = "xl"
+		textFont = "bold"
+		textColor = "red"
+	}
+
 	return(
 		<>
-			<p className="text-xl font-bold text-red">R$ 
+			<p className={"text-" + textSize + " font-" + textFont + " text-" + textColor}>
 			{
 				(expense) ?
-					expense:
-					""
+					"R$" + expense:
+					"Dados carregando ou indisponíveis"
 			}
 			</p>
 		</>

@@ -74,7 +74,7 @@ function LineChart ({data}) {
 					{
 						(chartData) ?
 							<Line options={options} data={chartData} />:
-							""
+							"Dados carregando ou indisponíveis"
 					}
 				</div>
 			</div>

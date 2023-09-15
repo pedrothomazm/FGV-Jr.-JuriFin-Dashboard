@@ -4,7 +4,7 @@ function CardTransactions({ data }) {
 	const [transactions, setTransactions] = useState(null)
 
 	useEffect(() => {
-		if (data && data.lancamentos){
+		if (data && data.lancamentos && data.lancamentos.length > 0){
 			const transactionsData = data.lancamentos
 			setTransactions(transactionsData)
 		}
@@ -48,10 +48,10 @@ function CardTransactions({ data }) {
 								""
 						} 
 					</p>
-					<p className={"text-basic text-" + colorsArray[0]}>R$
+					<p className={"text-basic text-" + colorsArray[0]}>
 						{
 							(transactions) ?
-								transactions[0].Lançamento.toFixed(2) :
+								"R$" + transactions[0].Lançamento.toFixed(2) :
 								""
 						}
 					</p>
@@ -68,13 +68,13 @@ function CardTransactions({ data }) {
 						{
 							(transactions) ?
 								transactions[1].Data :
-								""
+								"Dados carregando ou indisponiveis"
 						} 
 					</p>
-					<p className={"text-basic text-" + colorsArray[1]}>R$
+					<p className={"text-basic text-" + colorsArray[1]}>
 						{
 							(transactions) ?
-								transactions[1].Lançamento.toFixed(2) :
+								"R$" + transactions[1].Lançamento.toFixed(2) :
 								""
 						}
 					</p>
@@ -94,10 +94,10 @@ function CardTransactions({ data }) {
 								""
 						} 
 					</p>
-					<p className={"text-basic text-" + colorsArray[2]}>R$
+					<p className={"text-basic text-" + colorsArray[2]}>
 						{
 							(transactions) ?
-								transactions[2].Lançamento.toFixed(2) :
+								"R$" + transactions[2].Lançamento.toFixed(2) :
 								""
 						}
 					</p>

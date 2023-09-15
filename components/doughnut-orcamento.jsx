@@ -29,7 +29,7 @@ function DoughnutOrcamento({ data }) {
 	const [chartData, setChartData] = useState(null)
 
 	useEffect(() => {
-		if(data){
+		if(data && data.porcentagem_utilizado){
 			setPorcentagemOrcamentoUtilizado(data.porcentagem_utilizado.toFixed(2) * 100)
 			const porcentagemRestante = 100 - porcentagemOrcamentoUtilizado
 
@@ -63,10 +63,9 @@ function DoughnutOrcamento({ data }) {
 				<p className="self-center text-">
 					{
 						(chartData) ?
-							porcentagemOrcamentoUtilizado:
-							""
+							porcentagemOrcamentoUtilizado + "% utilizado":
+							"Dados carregando ou indisponíveis"
 					}	
-					% utilizado
 				</p>
 				<div className=" w-full h-1/2 p-2 flex justify-center">
 					{

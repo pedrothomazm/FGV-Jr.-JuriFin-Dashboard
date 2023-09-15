@@ -86,7 +86,7 @@ function BarChart({ data }) {
 					{
 						(chartData) ? 	
 							<Bar options={options} data={chartData} />:
-							""
+							"Dados carregando ou indisponiveis"
 					}
 				</div>
 			</div>

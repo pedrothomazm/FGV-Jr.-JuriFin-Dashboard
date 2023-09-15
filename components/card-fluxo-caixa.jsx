@@ -10,14 +10,18 @@ function CardCashFlow({ data }) {
 		}
 	}, [data])
 
-	let color = "dark"
+	let textSize = ""
+	let textFont = ""
+	let textColor = ""
 
 	if(cashFlow){
+		textSize = "xl"
+		textFont = "bold"
 		if(cashFlow > 0){
-			color = "green"
+			textColor = "green"
 		}
 		else{
-			color = "red"
+			textColor = "red"
 		}
 	}
 	
@@ -27,12 +31,12 @@ function CardCashFlow({ data }) {
 		<>
 			<div className="col-span-1 flex flex-col justify-center">
 				<p className="text-xl font-bold text-center">Indicador de fluxo de caixa</p>
-				<p className={"text-xl font-bold text-center text-" + color}>
+				<p className={"text-" + textSize + " font-" + textFont + " text-center text-" + textColor}>
 				{
 					(cashFlow) ?
-						cashFlow:
-						""
-				}%
+						cashFlow + "%":
+						"Dados carregando ou indisponíveis"
+				}
 				</p>
 			</div>
 		</>

@@ -9,23 +9,29 @@ function CardBalance({ data }) {
 			setBalance(balance)
 		}
 	}, [data])
+	
+	let color = ""
+	let textSize = ""
+	let textFont = ""
 
-	let color = "dark"
-
-	if(balance > 0){
+	if(balance && balance > 0){
 		color = "green"
+		textSize = "xl"
+		textFont = "bold"
 	}
-	else{
+	else if(balance && balance <= 0) {
 		color = "red"
+		textSize = "xl"
+		textFont = "bold"
 	}
 
 	return(
 		<>
-			<p className={"text-xl font-bold text-" + color}>R$ 
+			<p className={"text-" + textSize + " font-" + textFont + " text-" + color}>
 			{
 				(balance) ?
-					balance:
-					""
+					"R$" + balance:
+					"Dados carregando ou indisponíveis"
 			}
 			</p>
 		</>

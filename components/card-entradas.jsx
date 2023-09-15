@@ -10,13 +10,23 @@ function CardIncomes({ data }) {
 		}
 	}, [data])
 
+	let textSize = ""
+	let textFont = ""
+	let textColor = ""
+
+	if(income){
+		textSize = "xl"
+		textFont = "bold"
+		textColor = "green"
+	}
+
 	return(
 		<>
-			<p className="text-xl font-bold text-green">R$ 
+			<p className={"text-" + textSize + " font-" + textFont + " text-" + textColor}>
 			{
 				(income) ?
-					income:
-					""
+					"R$" + income:
+					"Dados carregando ou indisponíveis"
 			}
 			</p>
 		</>
