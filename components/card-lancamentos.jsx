@@ -8,6 +8,7 @@ function CardTransactions({ data }) {
 		if (data){
 			if(!data.lancamentos || data.lancamentos.length == 0){
 				setMessage("Dados indisponíveis")
+				setTransactions([])
 			}
 			else{
 				const transactionsData = data.lancamentos
@@ -15,6 +16,20 @@ function CardTransactions({ data }) {
 			}
 		}
 	}, [data])
+
+	let transactionsRow1 = false
+	let transactionsRow2 = false
+	let transactionsRow3 = false
+
+	if(transactions && transactions.length >= 1){
+		transactionsRow1 = true
+	}
+	if(transactions && transactions.length >= 2){
+		transactionsRow2 = true
+	}
+	if(transactions && transactions.length == 3){
+		transactionsRow3 = true
+	}
 
 	let colorsArray = ["dark", "dark", "dark"]
 
@@ -42,21 +57,21 @@ function CardTransactions({ data }) {
 				<div className="w-full px-2 flex flex-row justify-between items-center">
 					<p className="text-basic">
 						{
-							(transactions) ?
+							(transactionsRow1) ?
 								transactions[0].Origem:
 								""
 						} 
 					</p>
 					<p className="text-basic">
 						{
-							(transactions) ?
+							(transactionsRow1) ?
 								transactions[0].Data :
 								message
 						} 
 					</p>
 					<p className={"text-basic text-" + colorsArray[0]}>
 						{
-							(transactions) ?
+							(transactionsRow1) ?
 								"R$" + transactions[0].Lançamento.toFixed(2) :
 								""
 						}
@@ -65,21 +80,21 @@ function CardTransactions({ data }) {
 				<div className="w-full px-2 flex flex-row justify-between items-center">
 					<p className="text-basic">
 						{
-							(transactions && transactions[1]) ?
+							(transactionsRow2) ?
 								transactions[1].Origem:
 								"" 
 						} 
 					</p>
 					<p className="text-basic">
 						{
-							(transactions && transactions[1]) ?
+							(transactionsRow2) ?
 								transactions[1].Data :
 								""
 						} 
 					</p>
 					<p className={"text-basic text-" + colorsArray[1]}>
 						{
-							(transactions && transactions[1]) ?
+							(transactionsRow2) ?
 								"R$" + transactions[1].Lançamento.toFixed(2) :
 								""
 						}
@@ -88,21 +103,21 @@ function CardTransactions({ data }) {
 				<div className="w-full px-2 flex flex-row justify-between items-center">
 					<p className="text-basic">
 						{
-							(transactions && transactions[2]) ?
+							(transactionsRow3) ?
 								transactions[2].Origem:
 								"" 
 						} 
 					</p>
 					<p className="text-basic">
 						{
-							(transactions && transactions[2]) ?
+							(transactionsRow3) ?
 								transactions[2].Data :
 								""
 						} 
 					</p>
 					<p className={"text-basic text-" + colorsArray[2]}>
 						{
-							(transactions && transactions[2]) ?
+							(transactionsRow3) ?
 								"R$" + transactions[2].Lançamento.toFixed(2) :
 								""
 						}

@@ -69,9 +69,16 @@ function DoughnutOrcamento({ data }) {
 
 	return(
 		<>
-			<div className="w-full h-auto flex flex-col align-middle col-span-1 justify-center">
+			<div className="w-full h-auto flex flex-col align-middle col-span-1 justify-center py-2">
 				<p className="self-center text-lg font-bold">
 					Orçamento da área
+				</p>
+				<p className="self-center text-">
+					{
+						(chartData) ?
+							porcentagemOrcamentoUtilizado + "% utilizado":
+							message
+					}	
 				</p>
 				<div className=" w-full h-1/2 p-2 flex justify-center">
 					{
@@ -80,13 +87,6 @@ function DoughnutOrcamento({ data }) {
 							""
 					}
 				</div>
-				<p className="self-center text-">
-					{
-						(chartData) ?
-							porcentagemOrcamentoUtilizado + "% utilizado":
-							message
-					}	
-				</p>
 			</div>
 		</>
 	)
