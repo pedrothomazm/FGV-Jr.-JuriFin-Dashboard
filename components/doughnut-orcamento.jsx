@@ -36,21 +36,25 @@ function DoughnutOrcamento({ data }) {
 				setMessage("Dados indisponíveis")
 			}
 			else{
-				setPorcentagemOrcamentoUtilizado(data.porcentagem_utilizado.toFixed(2) * 100)
-				if(porcentagemOrcamentoUtilizado >= 100){
+				let porcUtilizado = data.porcentagem_utilizado.toFixed(2) * 100
+				let orcGrafico = 0
+				setPorcentagemOrcamentoUtilizado(porcUtilizado)
+				if(porcUtilizado >= 100){
 					setOrcamentoGrafico(100)
+					orcGrafico = 100
 				}
 				else{
-					setOrcamentoGrafico(porcentagemOrcamentoUtilizado)
+					setOrcamentoGrafico(porcUtilizado)
+					orcGrafico = porcUtilizado
 				}
-				const porcentagemRestante = 100 - orcamentoGrafico
+				const porcentagemRestante = 100 - orcGrafico
 				
 				setChartData({
 					labels: ['Utilizado', 'Restante'],
 					datasets: [
 						{
 							label: 'Orçamento utilizado',
-							data: [orcamentoGrafico, porcentagemRestante],
+							data: [orcGrafico, porcentagemRestante],
 							backgroundColor: [
 								'rgba(161, 173, 168)',
 								'rgba(34, 46, 102)'
@@ -65,7 +69,7 @@ function DoughnutOrcamento({ data }) {
 				})
 		}
 			}
-	}, [data]);
+	}, [data]);
 
 	return(
 		<>

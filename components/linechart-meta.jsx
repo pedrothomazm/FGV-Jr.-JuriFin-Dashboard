@@ -61,7 +61,7 @@ function LineChart ({data}) {
 				labels,
 				datasets: [
 					{
-						label: "Meta móvel",
+						label: "Meta",
 						data: goalsArray,
 						borderColor: 'rgba(34, 46, 102, 1)',
 						backgroundColor: 'rgba(34, 46, 102, 1)',

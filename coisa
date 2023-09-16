@@ -1,0 +1,40 @@
+useEffect(() => {
+		if(data){
+			if(!(data.porcentagem_utilizado)){
+				setMessage("Dados indisponíveis")
+			}
+			else{
+				let porcUtilizado = data.porcentagem_utilizado.toFixed(2) * 100
+				let orcGrafico = 0
+				setPorcentagemOrcamentoUtilizado(porcUtilizado)
+				if(porcUtilizado >= 100){
+					setOrcamentoGrafico(100)
+					orcGrafico = 100
+				}
+				else{
+					setOrcamentoGrafico(porcUtilizado)
+					orcGrafico = porcUtilizado
+				}
+				const porcentagemRestante = 100 - orcGrafico
+				
+				setChartData({
+					labels: ['Utilizado', 'Restante'],
+					datasets: [
+						{
+							label: 'Orçamento utilizado',
+							data: [orcGrafico, porcentagemRestante],
+							backgroundColor: [
+								'rgba(161, 173, 168)',
+								'rgba(34, 46, 102)'
+							],
+							borderColor: [
+								'rgba(161, 173, 168)',
+								'rgba(34, 46, 102)'
+							],
+							borderWidth: 1
+						},
+					],
+				})
+		}
+			}
+	}, [data]);
