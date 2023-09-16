@@ -60,7 +60,7 @@ function DoughnutInadimplencia({ data }) {
 
 	return(
 		<>
-			<div className="w-full h-full pt-1 flex flex-col align-middle col-span-1 justify-center pt-5">
+			<div className="w-full h-full flex flex-col align-middle col-span-1 justify-center pt-5">
 				<p className="self-center text-lg font-bold">
 					Inadimplência	
 				</p>
