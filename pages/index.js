@@ -50,7 +50,6 @@ export default function Home({data}) {
 		async function getData (area, dataInicial, dataFinal) {
       const areaEscaped = area.replace(" ", "%20")
       const url = `http://127.0.0.1:5328/${areaEscaped}/${dataInicial}/${dataFinal}`
-      console.log(url)
       const response = await fetch(url)
 			//const response = await fetch("http://127.0.0.1:5328/Geral/1000/100000")
 			const data = await response.json()
@@ -68,19 +67,21 @@ export default function Home({data}) {
   }
   
   const setMesInicial = (mes) => {
+    const mesTrunc = Math.trunc(mes)
     const date = new Date(0);
     date.setFullYear((new Date()).getFullYear());
-    date.setMonth(mes);
+    date.setMonth(mesTrunc);
     date.setDate(1);
     const serial = dateToSerial(date)
     setDataInicial(Math.trunc(serial))
   }
 
   const setMesFinal = (mes) => {
+    const mesTrunc = Math.trunc(mes)
     const date = new Date(0);
     date.setFullYear((new Date()).getFullYear());
-    date.setMonth(mes + 1);
-    date.setDate(1);
+    date.setMonth(mesTrunc + 1);
+    date.setDate(0);
     const serial = dateToSerial(date)
     setDataFinal(Math.trunc(serial))
   }
