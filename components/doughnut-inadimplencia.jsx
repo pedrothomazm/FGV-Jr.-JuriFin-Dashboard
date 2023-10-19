@@ -28,21 +28,28 @@ function DoughnutInadimplencia({ data }) {
 	const [valorInadimplencia, setValorInadimplencia] = useState(null)
 	const [porcentagemInadimplencia, setPorcentagemInadimplencia] = useState(null)
 	const [chartData, setChartData] = useState(null)
+	const [message, setMessage] = useState("Carregando os dados")
 
 	useEffect(() => {
 		if(data){
-			setPorcentagemInadimplencia(data.inadimplencia.porcentagem * 100)
-			const porcentagemAdimplencia = 100 - porcentagemInadimplencia
+			if(!(data.inadimplencia.porcentagem)){
+				setMessage("Dados indisponíveis")
+			}
+			else{
+				let porcInadimplencia = data.inadimplencia.porcentagem.toFixed(2) * 100
+				setPorcentagemInadimplencia(porcInadimplencia)
 
-			const inadimplentes = data.inadimplencia.inadimplencia
-			setValorInadimplencia(inadimplentes)
+				const porcentagemAdimplencia = 100 - porcInadimplencia
 
-			setChartData({
+				const valorInadimplencia = data.inadimplencia.inadimplencia
+				setValorInadimplencia(valorInadimplencia)
+
+				setChartData({
 				labels: ['Inadimplentes', 'Adimplentes'],
 				datasets: [
 					{
 						label: 'porcentagem de inadimplencia',
-						data: [porcentagemInadimplencia, porcentagemAdimplencia],
+						data: [porcInadimplencia, porcentagemAdimplencia],
 						backgroundColor: [
 							'rgba(161, 173, 168)',
 							'rgba(34, 46, 102)'
@@ -55,6 +62,7 @@ function DoughnutInadimplencia({ data }) {
 					},
 				],
 			})
+			}
 		}
 	}, [data]);
 
