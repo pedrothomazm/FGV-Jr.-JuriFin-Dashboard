@@ -1,16 +1,19 @@
 import Head from 'next/head'
 import Header from '@/components/header'
-import BarChart from '@/components/barchart-orcamento'
-import LineChart from '@/components/linechart-meta'
 
 import { useState, useEffect } from 'react'
+
 import CardBalance from '@/components/card-saldo'
 import CardIncomes from '@/components/card-entradas'
 import CardExpenses from '@/components/card-saidas'
-import DoughnutInadimplencia from '@/components/doughnut-inadimplencia'
-import DoughnutOrcamento from '@/components/doughnut-orcamento'
 import CardTransactions from '@/components/card-lancamentos'
 import CardCashFlow from '@/components/card-fluxo-caixa'
+
+import BarChart from '@/components/barchart-orcamento'
+import AreaChart from '@/components/areachart-meta'
+import DoughnutInadimplencia from '@/components/doughnut-inadimplencia'
+import DoughnutOrcamento from '@/components/doughnut-orcamento'
+
 import RangeSlider from '@/components/range-slider'
 import DropDownMenu from '@/components/dropdown-menu'
 
@@ -132,7 +135,7 @@ export default function Home({data}) {
               <BarChart data={sheetData} />
             </div>
             <div className='col-start-1 col-end-4 row-start-5 row-end-8 bg-gray-100 rounded-3xl'>
-              <LineChart data={sheetData} />
+              <AreaChart data={sheetData} />
             </div>
             <div className='col-start-4 col-end-7 row-start-1 row-end-5 bg-gray-100 rounded-3xl grid grid-cols-3 grid-rows-4 justify-items-evenly'>
               <div className='col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col h-1/5 w-full self-center'>

@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Line } from 'react-chartjs-2' ;
+import { useState, useEffect } from 'react';
+import { Line } from 'react-chartjs-2';
 
 import {
 	Chart as ChartJS,
@@ -9,8 +9,9 @@ import {
 	LineElement,
 	Title,
 	Tooltip,
+	Filler,
 	Legend,
-} from 'chart.js'
+} from 'chart.js';
 
 ChartJS.register(
 	CategoryScale,
@@ -19,7 +20,8 @@ ChartJS.register(
 	LineElement,
 	Title,
 	Tooltip,
-	Legend,
+	Filler,
+	Legend
 );
 
 export const options = {
@@ -27,7 +29,7 @@ export const options = {
 	maintainAspectRatio: false,
 	plugins: {
 		legend: {
-			postion: 'bottom'
+			position: "top"
 		},
 		title:{
 			display: false,
@@ -36,7 +38,7 @@ export const options = {
 	}
 };
 
-function LineChart ({data}) {	
+function AreaChart ({data}) {	
 	const [chartData, setChartData] = useState(null)
 
 	useEffect(() => {
@@ -61,16 +63,18 @@ function LineChart ({data}) {
 				labels,
 				datasets: [
 					{
+						fill: false,
 						label: "Meta",
 						data: goalsArray,
 						borderColor: 'rgba(34, 46, 102, 1)',
 						backgroundColor: 'rgba(34, 46, 102, 1)',
 					},
 					{
-						label: "Atual",
+						fill: true,
+						label: "Faturamento",
 						data: incomesArray,
 						borderColor: 'rgba(161, 173, 168)',
-						backgroundColor: 'rgba(161, 173, 168)',
+						backgroundColor: 'rgba(161, 173, 168, 0.4)',
 					}
 
 				]
@@ -96,4 +100,4 @@ function LineChart ({data}) {
 	)
 };
 
-export default LineChart
+export default AreaChart
