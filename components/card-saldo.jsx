@@ -14,15 +14,15 @@ function CardBalance({ data }) {
 	let textSize = "sm"
 	let textFont = ""
 
-	if(balance && balance > 0){
-		color = "green"
+	if(balance){
 		textSize = "xl"
 		textFont = "bold"
-	}
-	else if(balance && balance <= 0) {
-		color = "red"
-		textSize = "xl"
-		textFont = "bold"
+		if(balance > 0){
+			color = "green"
+		}
+		else if(balance <= 0){
+			color = "red"
+		}
 	}
 
 	return(

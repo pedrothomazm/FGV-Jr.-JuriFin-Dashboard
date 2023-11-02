@@ -21,14 +21,16 @@ function CardTransactions({ data }) {
 	let transactionsRow2 = false
 	let transactionsRow3 = false
 
-	if(transactions && transactions.length >= 1){
-		transactionsRow1 = true
-	}
-	if(transactions && transactions.length >= 2){
-		transactionsRow2 = true
-	}
-	if(transactions && transactions.length == 3){
-		transactionsRow3 = true
+	if(transactions){
+		if(transactions.length >= 1){
+			transactionsRow1 = true
+		}
+		if(transactions.length >= 2){
+			transactionsRow2 = true
+		}
+		if(transactions.length >= 3){
+			transactionsRow3 = true
+		}
 	}
 
 	let colorsArray = ["dark", "dark", "dark"]
