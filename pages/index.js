@@ -137,20 +137,22 @@ export default function Home({data}) {
             <div className='col-start-1 col-end-4 row-start-5 row-end-8 bg-gray-100 rounded-3xl'>
               <AreaChart data={sheetData} />
             </div>
-            <div className='col-start-4 col-end-7 row-start-1 row-end-5 bg-gray-100 rounded-3xl grid grid-cols-3 grid-rows-4 justify-items-evenly'>
-              <div className='col-start-1 col-end-2 row-start-1 row-end-2 flex flex-col h-1/5 w-full self-center'>
-                <DropDownMenu buttonLabel={area} items={areas} onChange={setArea} className="w-[25%]"/>
-                <p className='font-bold self-center'>Filtrar por área</p>
-              </div>
-              <div className='col-start-2 col-end-4 row-start-1 row-end-2 h-full w-full px-6 flex flex-col pt-12 self-center'>
-                <RangeSlider items={meses} onSet={(values, handle) => {
-                  if (handle === 0) {
-                    setMesInicial(values[handle])
-                  } else {
-                    setMesFinal(values[handle])
-                  }
-                }} />
-                <p className='font-bold self-center'>Filtrar período de tempo</p>
+            <div className='col-start-4 col-end-7 row-start-1 row-end-5 bg-gray-100 rounded-3xl grid grid-cols-3 grid-rows-4 content-center'>
+              <div className='col-start-1 col-end-4 row-start-1 row-end-2 flex flex-row align-middle'>
+                <div className='flex flex-col h-4/5 w-full self-center px-5'>
+                  <DropDownMenu buttonLabel={area} items={areas} onChange={setArea} className="w-[25%]"/>
+                  <p className='font-bold self-center'>Filtrar por área</p>
+                </div>
+                <div className='h-full w-full flex flex-col justify-end px-6 pt-4'>
+                  <RangeSlider items={meses} onSet={(values, handle) => {
+                    if (handle === 0) {
+                      setMesInicial(values[handle])
+                    } else {
+                      setMesFinal(values[handle])
+                    }
+                  }} />
+                  <p className='font-bold self-center'>Filtrar período de tempo</p>
+                </div>
               </div>
               <CardTransactions data={sheetData} />
             </div>

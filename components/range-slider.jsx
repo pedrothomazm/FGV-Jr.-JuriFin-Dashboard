@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import noUiSlider from "nouislider";
 import 'nouislider/dist/nouislider.css'; // Import the CSS
+// import noUiStyler from '../styles/nouislider.module.css' // import 
 
 noUiSlider.cssClasses.target += ' slider-color';
 

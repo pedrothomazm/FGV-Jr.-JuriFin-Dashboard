@@ -48,7 +48,8 @@ function DoughnutInadimplencia({ data }) {
 				labels: ['Inadimplentes', 'Adimplentes'],
 				datasets: [
 					{
-						label: 'porcentagem de inadimplencia',
+						// label: 'Porcentagem de inadimplencia',
+						label: '%',
 						data: [porcInadimplencia, porcentagemAdimplencia],
 						backgroundColor: [
 							'rgba(161, 173, 168)',

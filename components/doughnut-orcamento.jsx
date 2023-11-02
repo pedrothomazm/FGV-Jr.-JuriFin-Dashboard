@@ -53,7 +53,7 @@ function DoughnutOrcamento({ data }) {
 					labels: ['Utilizado', 'Restante'],
 					datasets: [
 						{
-							label: 'Orçamento utilizado',
+							label: '%',
 							data: [orcGrafico, porcentagemRestante],
 							backgroundColor: [
 								'rgba(161, 173, 168)',
